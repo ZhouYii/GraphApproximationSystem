@@ -1,0 +1,1 @@
+curl -H "Content-Type: application/json" -d '{ "graphDataPath": "foobar", "sampleType": "layered", "sampleFrac": 0.15, "queryAlgo": "pagerank", "stitchNumGraph": 1, "stitchStrategy": "sum"}' http://localhost:8000/queries.json

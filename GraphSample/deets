@@ -1,0 +1,7 @@
+[INFO] [HBLEvents] The table predictionio_eventdata:events_2 doesn't exist yet.
+Creating now...
+[INFO] [App$] Initialized Event Store for this app ID: 2.
+[INFO] [App$] Created new app:
+[INFO] [App$]       Name: GraphSampling
+[INFO] [App$]         ID: 2
+[INFO] [App$] Access Key: 0g4B5bJw9wz8xfWBifAzlemkAtEjvwXzDh8TKW3K3gpZuAoaM0O12ruPcyrylHhU
