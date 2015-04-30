@@ -25,10 +25,19 @@ class Algorithm(val ap: AlgorithmParams)
     new Model(4, sc)
   }
 
+  def time[R](block: => R): R = {
+    val t0 = System.nanoTime()
+    val result = block    // call-by-name
+    val t1 = System.nanoTime()
+    println("Elapsed time: " + (t1 - t0) + "ns")
+    result
+  }
+
   def predict(model: Model, query: Query): PredictedResult = {
     // Load Graph
     val g = loadGraph(model.sc, query.queryAlgo, query.graphDataPath)
 
+    val elapsedTime = time {
     // Get Samples
     val samples = getSamples(g,
       query.sampleType,
@@ -37,7 +46,6 @@ class Algorithm(val ap: AlgorithmParams)
 
     // Run query on samples
     val aggregateResult = runQuery(samples, query.queryAlgo, query.stitchStrategy)
-
     val groundTruth = runQuery(List(g), query.queryAlgo, "None")
 
     // PageRank
@@ -45,6 +53,7 @@ class Algorithm(val ap: AlgorithmParams)
         aggregateResult.asInstanceOf[Graph[Double,Double]],
         groundTruth.asInstanceOf[Graph[Double,Double]],
         query)
+     }
 
     // Test double-to-string
     PredictedResult(0.54.toString)
