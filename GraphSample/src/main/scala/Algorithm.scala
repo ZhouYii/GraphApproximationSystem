@@ -46,7 +46,6 @@ class Algorithm(val ap: AlgorithmParams)
 
     // Run query on samples
     val aggregateResult = runQuery(samples, query.queryAlgo, query.stitchStrategy)
-
     val groundTruth = runQuery(List(g), query.queryAlgo, "None")
 
     // PageRank
